@@ -2,7 +2,7 @@ import argparse
 import os
 import sys
 from day1.expense_report import prod_of_2020_sum, prod_of_2020_3_val_sum
-from day2.password_validator import count_valid_passwords
+from day2.password_validator import count_valid_passwords_policy_1, count_valid_passwords_policy_2
 
 
 class InvalidArgument(Exception):
@@ -15,7 +15,7 @@ DAYS = {
         'per_line_func': int
     },
     2: {
-        'star_funcs': [count_valid_passwords]
+        'star_funcs': [count_valid_passwords_policy_1, count_valid_passwords_policy_2]
     }
 }
 
