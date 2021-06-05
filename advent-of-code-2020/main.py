@@ -2,6 +2,7 @@ import argparse
 import os
 import sys
 from day1.expense_report import prod_of_2020_sum, prod_of_2020_3_val_sum
+from day2.password_validator import count_valid_passwords
 
 
 class InvalidArgument(Exception):
@@ -12,6 +13,9 @@ DAYS = {
     1: {
         'star_funcs': [prod_of_2020_sum, prod_of_2020_3_val_sum],
         'per_line_func': int
+    },
+    2: {
+        'star_funcs': [count_valid_passwords]
     }
 }
 
@@ -48,5 +52,10 @@ def get_input_lines(day, per_line_func=None):
 if __name__ == '__main__':
     day, star = get_day_and_star()
     star_func = get_star_func(day, star)
-    input_lines = get_input_lines(day, DAYS[day]['per_line_func'])
+
+    if 'per_line_func' in DAYS[day]:
+        input_lines = get_input_lines(day, DAYS[day]['per_line_func'])
+    else:
+        input_lines = get_input_lines(day)
+
     print(f"Output for day {day} star {star} is: {star_func(input_lines)}")
